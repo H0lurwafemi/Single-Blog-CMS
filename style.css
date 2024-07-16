@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+#task-form {
+    margin-bottom: 20px;
+}
+
+#task-input {
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    width: 300px;
+}
+
+.task {
+    background-color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+
+
+
+/* body: Sets the base styles for the body,
+including font,
+background color,
+layout,
+and padding. h1: Styles the header text color. #task-form: Adds margin to the form for spacing. #task-input: Styles the input field with padding and font size. button: Styles the button with padding,
+font size,
+background color,
+text color,
+border,
+and cursor. button:hover: Changes the button background color on hover. #task-list: Removes list styling,
+sets padding,
+and defines the width. .task: Styles each task item with background color,
+padding,
+margin,
+border,
+and layout properties. .task.completed: Adds a line-through decoration and changes the color for completed tasks. */
