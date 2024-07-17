@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
     // waiting for the browser to LOAD
     let form = document.getElementById('post-form');

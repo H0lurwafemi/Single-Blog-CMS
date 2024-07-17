@@ -32,26 +32,91 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// a.  Waiting for the Page to Load:
+document.addEventListener('DOMContentLoaded', function () {
+    
+    // This line tells the browser to wait until the whole web page is ready before running the rest of the code.
+    // It's like waiting for your notebook to open before you start writing in it.
 
-// document.addEventListener('DOMContentLoaded', function() { ... });: Ensures the DOM is fully loaded before running the script.
-// const form = document.getElementById('task-form');: Selects the form element by its ID.
-// const taskInput = document.getElementById('task-input');: Selects the input field by its ID.
-// const taskList = document.getElementById('task-list');: Selects the task list element by its ID.
-// form.addEventListener('submit', function(event) { ... });: Adds an event listener to the form for the submit event.
-// event.preventDefault();: Prevents the form from submitting the traditional way.
-// addTask(taskInput.value);: Calls the addTask function with the input value.
-// taskInput.value = '';: Clears the input field.
-// function addTask(task) { ... }: Defines the addTask function.
-// if (task === '') return;: Returns early if the task is an empty string.
-// const li = document.createElement('li');: Creates a new li element.
-// li.className = 'task';: Sets the class name of the li element.
-// li.appendChild(document.createTextNode(task));: Adds the task text to the li element.
-// const deleteBtn = document.createElement('button');: Creates a new button element.
-// deleteBtn.appendChild(document.createTextNode('X'));: Adds text to the delete button.
-// deleteBtn.className = 'delete';: Sets the class name of the delete button.
-// deleteBtn.addEventListener('click', function() { ... });: Adds an event listener to the delete button for the click event.
-// taskList.removeChild(li);: Removes the task item from the task list.
-// li.appendChild(deleteBtn);: Adds the delete button to the task item.
-// li.addEventListener('click', function() { ... });: Adds an event listener to the task item for the click event.
-// li.classList.toggle('completed');: Toggles the completed class on the task item.
-// taskList.appendChild(li);: Adds the task item to the task list.
+//b.  Finding Important Parts of the Page:
+    
+const form = document.getElementById('task-form');
+const taskInput = document.getElementById('task-input');
+const taskList = document.getElementById('task-list');
+
+
+// These lines find specific parts of the web page:
+
+// form is where you write your task.
+// taskInput is the box where you type your task.
+// taskList is the place where all the tasks will be shown.
+
+// c. Listening for the Form Submission:
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    addTask(taskInput.value);
+    taskInput.value = '';
+});
+
+// This part listens for when you press the button to add a task:
+
+// When you press the button, it stops the page from doing anything else (event.preventDefault()).
+// It uses a function (addTask) to create a new task with the text you typed in the box.
+// After adding the task, it clears the input box so you can write another task.
+
+
+// d. Creating a New Task:
+function addTask(task) {
+    if (task === '') return;
+
+//     This function (addTask) creates a new task:
+
+// It first checks if the task is empty. If it is, it does nothing (return).
+
+
+// Making a New List Item:
+    const li = document.createElement('li');
+    li.className = 'task';
+    li.appendChild(document.createTextNode(task));
+
+//     const li = document.createElement('li');: This makes a new list item (<li>) for the task.
+// li.className = 'task';: This gives the list item a class name so we can style it with CSS.
+// li.appendChild(document.createTextNode(task));: This puts the text of the task inside the list item.
+
+
+// e . Creating a Delete Button:
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.appendChild(document.createTextNode('X'));
+    deleteBtn.className = 'delete';
+    deleteBtn.addEventListener('click', function() {
+        taskList.removeChild(li);
+    });
+
+//     const deleteBtn = document.createElement('button');: This makes a new button for deleting the task.
+// deleteBtn.appendChild(document.createTextNode('X'));: This puts an "X" on the button to show it's for deleting.
+// deleteBtn.className = 'delete';: This gives the button a class name so we can style it with CSS.
+// deleteBtn.addEventListener('click', function() { taskList.removeChild(li); });: This tells the button to remove the task when clicked.
+
+
+// f Adding the Delete Button to the Task:
+
+    li.appendChild(deleteBtn);
+
+// This adds the delete button to the list item.
+    
+// g. Marking a Task as Completed:
+
+    li.addEventListener('click', function() {
+        li.classList.toggle('completed');
+    });
+
+//     This adds a way to mark a task as completed when you click on it:
+
+// li.addEventListener('click', function() { li.classList.toggle('completed'); });: This tells the list item to toggle (add/remove) the completed class when clicked, which can change how the task looks (like crossing it out).
+
+// h. Adding the Task to the List:
+    taskList.appendChild(li);
+
+    This adds the new task (list item) to the list of tasks.
